@@ -1,0 +1,38 @@
+---
+title: "Data Exploration"
+author: "Hamza"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+In this task, we explored the World Happiness Report 2024 dataset using R. The dataset was loaded and inspected for missing values, and a summary of key statistical insights was generated. We identified any missing data and handled inconsistencies to ensure a clean dataset. The cleaned version of the dataset was then saved for further analysis. This step provided an initial understanding of the dataset, setting the foundation for deeper analysis and visualization in subsequent tasks.
+
+#Loading the Libraries
+
+install.packages("tidyverse")   
+ 
+
+library(readr)       # For reading CSV files
+
+
+#Loading the Dataset
+happiness happiness_data <- read.csv("world-happiness-report-2024.csv")
+
+head(happiness_data, 5)
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

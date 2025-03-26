@@ -1,0 +1,30 @@
+---
+title: "Climate Change Data Visualization"
+author: "Hamza"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+# Set CRAN mirror and install ggplot2 if missing
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+if (!require("ggplot2")) install.packages("ggplot2", dependencies=TRUE)
+
+# Load the ggplot2 library
+library(ggplot2)
+
+# Load the dataset
+climate_data <- read.csv("GlobalTemperatures.csv")
+
+# Convert date column to year
+climate_data$Year <- as.numeric(format(as.Date(climate_data$dt), "%Y"))
+
+# Create a line chart for global temperature change over time
+ggplot(climate_data, aes(x = Year, y = LandAverageTemperature)) +
+  geom_line(color = "blue") +
+  labs(title = "Global Temperature Change Over Time", x = "Year", y = "Temperature Anomaly")
+
+# Save the line chart as PNG
+ggsave("line_chart.png")
+
+print("Line chart saved successfully.")

@@ -1,0 +1,31 @@
+---
+title: "Data Exploration: World Happiness Report 2024"
+author: "Hamza"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+# Load necessary libraries
+library(tidyverse)
+
+# Load the dataset
+happiness_data <- read.csv("WHR2024.csv")
+
+# Display the first 5 rows
+head(happiness_data, 5)
+
+# Get basic summary statistics
+summary(happiness_data)
+
+# Identify missing values
+colSums(is.na(happiness_data))
+
+# Remove rows with missing values (if any)
+happiness_cleaned <- na.omit(happiness_data)
+
+# Save the cleaned dataset
+write.csv(happiness_cleaned, "cleaned_happiness.csv", row.names = FALSE)
+
+# Confirm cleaning
+print("Data Cleaning Complete. Cleaned dataset saved as cleaned_happiness.csv")
